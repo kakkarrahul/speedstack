@@ -1,0 +1,32 @@
+{
+  "name": "smartpage",
+  "version": "0.0.1",
+  "authors": [
+    "Tushar Kant <nanu.clickity@gmail.com>"
+  ],
+  "description": "Smartpage web app",
+  "moduleType": [
+    "amd"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "requirejs": "*",
+    "marionette": "*",
+    "backbone.radio": "*",
+    "animate.css": "~3.2.6",
+    "bootstrap": "~3.3.4",
+    "fontawesome": "*",
+    "require-css": "*",
+    "requirejs-plugins": "*",
+    "SourceSansPro": "*",
+    "momentjs": "~2.10.2"
+  }
+}
