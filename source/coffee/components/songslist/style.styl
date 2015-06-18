@@ -1,0 +1,23 @@
+.view-songs-list
+	.song-item
+		display block
+		height 80px
+		
+		&:hover
+			background-color rgba(#000, 0.12)
+		&:active
+			background-color rgba(#000, 0.24)
+		&:last-child
+			border-bottom none
+			
+	.song-item.active
+		background-color #fff
+		flex-basis 300px		
+
+	.song-inner
+		padding 12px 24px
+		box-sizing border-box
+		width 100%
+		
+		> h4
+			margin 0

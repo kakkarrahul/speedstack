@@ -1,0 +1,315 @@
+mixin _post-details(_likes, _shares, _comments)
+	ul.post-details
+		li
+			i.entypo-thumbs-up
+			span.name #{_likes}  
+		li 
+			i.entypo-share
+			span.name #{_shares} 
+		li 
+			i.entypo-comment
+			span.name #{_comments} 
+
+
+
+mixin box-head(_title)
+	.box-head 
+		.title #{_title}
+		ul.options
+			li.close
+				i.entypo-cross
+
+
+.page-header.alt
+	h1 Social Widgets
+		small Like Cherry on Cake
+	.navhelper
+		ul
+			li.active(data-target='#social-post') 
+				i.icomoon-facebook 
+				| Post
+			li(data-target='#social-chatbox')
+				i.entypo-chat 
+				| Chat
+			li(data-target='#social-icons')
+				i.icomoon-IcoMoon 
+				| Icons
+			li(data-target='#social-audio')
+				i.icomoon-music 
+				| Audio
+			li(data-target='#social-video')
+				i.icomoon-play 
+				| Video
+			li(data-target='#social-feeds')
+				i.icomoon-feed-2 
+				| Feeds
+
+.page-break#social-post
+	.title Social Posts
+
+.row-fluid
+	.span4
+		h2 Social Post
+	.span4
+		.social-post
+			.pic
+				img.post-img(src="./static/img/post3.jpg")
+			.post
+				blockquote 
+					p Simple Post
+					small
+						a John Doe 
+						| via 
+						a Colors Admin
+				mixin _post-details(139, 3, 43)
+	.span4
+		.social-post
+			.pic
+				img.post-img(src="./static/img/loginback.jpg")
+			.post
+				blockquote 
+					p Post with comments
+					small
+						a John Doe 
+						| via 
+						a Colors Admin
+				mixin _post-details(139, 3, 43)
+			ul.media-list.comments
+				li.media
+					a.media-object-container(href='#')
+						img.media-object(src='./static/img/post6-thumb.jpg')
+					.media-body
+						h4.media-heading 
+							span.name Emily 
+							|says:
+						p Rotated
+				li.media
+					a.media-object-container(href='#')
+						img.media-object(src='./static/img/post6-thumb.jpg')
+					.media-body
+						h4.media-heading 
+							span.name Emily 
+							|says:
+						p Rotated
+				li.media
+					a.media-object-container(href='#')
+						img.media-object(src='./static/img/post6-thumb.jpg')
+					.media-body
+						h4.media-heading 
+							span.name Laila 
+							|says:
+						p That's 90 degrees.
+				li.media.newcomment
+					input.span12(type='text', placeholder='Write new comment')
+
+.page-break#social-chatbox
+	.title Chat Box
+
+.row-fluid
+	.span4
+		ul.chatbox
+			li.chat
+				.pic
+					img(src='./static/img/post6-thumb.jpg')
+				.textwrap
+					h4.heading Tushar :
+					p.text This is chat
+			li.chat
+				.pic
+					img(src='./static/img/post6-thumb.jpg')
+				.textwrap
+					h4.heading Tushar :
+					p.text This is chat
+			li.chat
+				.pic
+					img(src='./static/img/post6-thumb.jpg')
+				.textwrap
+					h4.heading Tushar :
+					p.text This is chat
+			li.chat
+				.pic
+					img(src='./static/img/post6-thumb.jpg')
+				.textwrap
+					h4.heading Tushar :
+					p.text This is chat
+		.newchat
+			.pic
+				img(src='./static/img/post6-thumb.jpg')
+			.textwrap
+
+	.span4
+		ul.chatbox.alt
+			li.chat
+				.pic
+					img(src='./static/img/post6-thumb.jpg')
+				.textwrap
+					h4.heading Tushar :
+					p.text This is chat
+			li.chat
+				.pic
+					img(src='./static/img/post6-thumb.jpg')
+				.textwrap
+					h4.heading Tushar :
+					p.text This is chat
+			li.chat
+				.pic
+					img(src='./static/img/post6-thumb.jpg')
+				.textwrap
+					h4.heading Tushar :
+					p.text This is chat
+			li.chat
+				.pic
+					img(src='./static/img/post6-thumb.jpg')
+				.textwrap
+					h4.heading Tushar :
+					p.text This is chat
+	.span4
+		h2 Chats
+		p ModularUI boosts your website, even if you require custom social media widgets; such as chatboxes.
+		p The chatbox chats have an odd-even (alternating) styling.
+
+
+.page-break#social-icons
+	.title Social Icons
+
+.row-fluid
+	.row-fluid
+		.span6
+			h2 Social Icons
+			p ModularUI serves social icons through various customizable icon font sets. Such as 
+			ol
+				li FontAwesome
+				li Icomoon
+				li Entypo
+			p
+				label Heads Up!
+				| These icon sets can be customized using keyamoon's icomoon app. You can add as much vector icons as you want.
+				| The app compiles them down in a vector font set.
+				| Ready to use anywhere. With full styling freedom.
+
+		.span6
+			h3.underline Social Set 1
+			.row-fluid
+				ul.unstyled.icons-container.social
+					- for k in ['icomoon-google', 'icomoon-google-plus', 'icomoon-google-plus-2', 'icomoon-google-plus-3', 'icomoon-gplus', 'icomoon-google-drive', 'icomoon-facebook', 'icomoon-facebook-2', 'icomoon-facebook-3', 'icomoon-instagram', 'icomoon-twitter', 'icomoon-twitter-2', 'icomoon-twitter-3', 'icomoon-feed', 'icomoon-feed-2', 'icomoon-feed-3', 'icomoon-youtube', 'icomoon-youtube-2', 'icomoon-vimeo', 'icomoon-vimeo-2', 'icomoon-flickr', 'icomoon-flickr-2', 'icomoon-flickr-3', 'icomoon-picassa', 'icomoon-picassa-2', 'icomoon-dribbble', 'icomoon-dribbble-2', 'icomoon-dribbble-3', 'icomoon-forrst', 'icomoon-forrst-2', 'icomoon-deviantart', 'icomoon-deviantart-2', 'icomoon-github', 'icomoon-github-2', 'icomoon-github-3', 'icomoon-github-4', 'icomoon-github-5', 'icomoon-github-6', 'icomoon-git', 'icomoon-github-7', 'icomoon-wordpress', 'icomoon-wordpress-2', 'icomoon-joomla', 'icomoon-blogger', 'icomoon-blogger-2', 'icomoon-tumblr', 'icomoon-tumblr-2', 'icomoon-yahoo', 'icomoon-yahoo-2', 'icomoon-amazon', 'icomoon-amazon-2', 'icomoon-tux', 'icomoon-apple', 'icomoon-finder', 'icomoon-android', 'icomoon-windows', 'icomoon-soundcloud', 'icomoon-soundcloud-2', 'icomoon-skype', 'icomoon-reddit', 'icomoon-linkedin', 'icomoon-linkedin-2', 'icomoon-lastfm', 'icomoon-lastfm-2', 'icomoon-delicious', 'icomoon-stumbleupon', 'icomoon-stumbleupon-2', 'icomoon-pinterest', 'icomoon-pinterest-2', 'icomoon-xing', 'icomoon-xing-2', 'icomoon-flattr', 'icomoon-foursquare', 'icomoon-foursquare-2', 'icomoon-paypal', 'icomoon-paypal-2', 'icomoon-paypal-3', 'icomoon-yelp', 'icomoon-libreoffice', 'icomoon-file-pdf', 'icomoon-file-openoffice', 'icomoon-file-word', 'icomoon-file-excel', 'icomoon-file-powerpoint', 'icomoon-file-xml', 'icomoon-file-css', 'icomoon-html5', 'icomoon-html5-2', 'icomoon-css3', 'icomoon-chrome', 'icomoon-firefox', 'icomoon-IE', 'icomoon-opera', 'icomoon-safari', 'icomoon-IcoMoon', 'icomoon-file-zip']
+						- var name = k.slice(8)
+						li(rel='tooltip', title= name)
+							i(class= k + ' ' + name)
+		
+	.row-fluid
+		.span6
+			h3.underline Social Set 2
+			.row-fluid
+				ul.unstyled.icons-container.social.alt
+					- for k in ['icomoon-google', 'icomoon-google-plus', 'icomoon-google-plus-2', 'icomoon-google-plus-3', 'icomoon-gplus', 'icomoon-google-drive', 'icomoon-facebook', 'icomoon-facebook-2', 'icomoon-facebook-3', 'icomoon-instagram', 'icomoon-twitter', 'icomoon-twitter-2', 'icomoon-twitter-3', 'icomoon-feed', 'icomoon-feed-2', 'icomoon-feed-3', 'icomoon-youtube', 'icomoon-youtube-2', 'icomoon-vimeo', 'icomoon-vimeo-2', 'icomoon-flickr', 'icomoon-flickr-2', 'icomoon-flickr-3', 'icomoon-picassa', 'icomoon-picassa-2', 'icomoon-dribbble', 'icomoon-dribbble-2', 'icomoon-dribbble-3', 'icomoon-forrst', 'icomoon-forrst-2', 'icomoon-deviantart', 'icomoon-deviantart-2', 'icomoon-github', 'icomoon-github-2', 'icomoon-github-3', 'icomoon-github-4', 'icomoon-github-5', 'icomoon-github-6', 'icomoon-git', 'icomoon-github-7', 'icomoon-wordpress', 'icomoon-wordpress-2', 'icomoon-joomla', 'icomoon-blogger', 'icomoon-blogger-2', 'icomoon-tumblr', 'icomoon-tumblr-2', 'icomoon-yahoo', 'icomoon-yahoo-2', 'icomoon-amazon', 'icomoon-amazon-2', 'icomoon-tux', 'icomoon-apple', 'icomoon-finder', 'icomoon-android', 'icomoon-windows', 'icomoon-soundcloud', 'icomoon-soundcloud-2', 'icomoon-skype', 'icomoon-reddit', 'icomoon-linkedin', 'icomoon-linkedin-2', 'icomoon-lastfm', 'icomoon-lastfm-2', 'icomoon-delicious', 'icomoon-stumbleupon', 'icomoon-stumbleupon-2', 'icomoon-pinterest', 'icomoon-pinterest-2', 'icomoon-xing', 'icomoon-xing-2', 'icomoon-flattr', 'icomoon-foursquare', 'icomoon-foursquare-2', 'icomoon-paypal', 'icomoon-paypal-2', 'icomoon-paypal-3', 'icomoon-yelp', 'icomoon-libreoffice', 'icomoon-file-pdf', 'icomoon-file-openoffice', 'icomoon-file-word', 'icomoon-file-excel', 'icomoon-file-powerpoint', 'icomoon-file-xml', 'icomoon-file-css', 'icomoon-html5', 'icomoon-html5-2', 'icomoon-css3', 'icomoon-chrome', 'icomoon-firefox', 'icomoon-IE', 'icomoon-opera', 'icomoon-safari', 'icomoon-IcoMoon', 'icomoon-file-zip']
+						- var name = k.slice(8)
+						li(rel='tooltip', title= name)
+							i(class= k + ' ' + name)
+		.span6
+			h3.underline Social Set 3
+			.row-fluid
+				ul.unstyled.icons-container.social.alt2
+					- for k in ['icomoon-google', 'icomoon-google-plus', 'icomoon-google-plus-2', 'icomoon-google-plus-3', 'icomoon-gplus', 'icomoon-google-drive', 'icomoon-facebook', 'icomoon-facebook-2', 'icomoon-facebook-3', 'icomoon-instagram', 'icomoon-twitter', 'icomoon-twitter-2', 'icomoon-twitter-3', 'icomoon-feed', 'icomoon-feed-2', 'icomoon-feed-3', 'icomoon-youtube', 'icomoon-youtube-2', 'icomoon-vimeo', 'icomoon-vimeo-2', 'icomoon-flickr', 'icomoon-flickr-2', 'icomoon-flickr-3', 'icomoon-picassa', 'icomoon-picassa-2', 'icomoon-dribbble', 'icomoon-dribbble-2', 'icomoon-dribbble-3', 'icomoon-forrst', 'icomoon-forrst-2', 'icomoon-deviantart', 'icomoon-deviantart-2', 'icomoon-github', 'icomoon-github-2', 'icomoon-github-3', 'icomoon-github-4', 'icomoon-github-5', 'icomoon-github-6', 'icomoon-git', 'icomoon-github-7', 'icomoon-wordpress', 'icomoon-wordpress-2', 'icomoon-joomla', 'icomoon-blogger', 'icomoon-blogger-2', 'icomoon-tumblr', 'icomoon-tumblr-2', 'icomoon-yahoo', 'icomoon-yahoo-2', 'icomoon-amazon', 'icomoon-amazon-2', 'icomoon-tux', 'icomoon-apple', 'icomoon-finder', 'icomoon-android', 'icomoon-windows', 'icomoon-soundcloud', 'icomoon-soundcloud-2', 'icomoon-skype', 'icomoon-reddit', 'icomoon-linkedin', 'icomoon-linkedin-2', 'icomoon-lastfm', 'icomoon-lastfm-2', 'icomoon-delicious', 'icomoon-stumbleupon', 'icomoon-stumbleupon-2', 'icomoon-pinterest', 'icomoon-pinterest-2', 'icomoon-xing', 'icomoon-xing-2', 'icomoon-flattr', 'icomoon-foursquare', 'icomoon-foursquare-2', 'icomoon-paypal', 'icomoon-paypal-2', 'icomoon-paypal-3', 'icomoon-yelp', 'icomoon-libreoffice', 'icomoon-file-pdf', 'icomoon-file-openoffice', 'icomoon-file-word', 'icomoon-file-excel', 'icomoon-file-powerpoint', 'icomoon-file-xml', 'icomoon-file-css', 'icomoon-html5', 'icomoon-html5-2', 'icomoon-css3', 'icomoon-chrome', 'icomoon-firefox', 'icomoon-IE', 'icomoon-opera', 'icomoon-safari', 'icomoon-IcoMoon', 'icomoon-file-zip']
+						- var name = k.slice(8)
+						li(rel='tooltip', title= name)
+							i(class= k + ' ' + name)
+.page-break#social-audio
+	.title Audio Player
+.row-fluid
+	.span4
+		h2 Audio Player
+		p.lead ModularUI, has custom styled html5 audio and video player widgets.
+		p The player's are fully functional and a simple Javascript handler is integrated in this theme.
+		p One more feature, you won't find in other themes.
+	.span4
+		br
+		br
+		.audioplayer
+			audio
+			.player-inner
+				.controls
+					ul
+						li.previous
+							i.icon-fast-backward
+						li.playpause
+							i.icon-play
+						li.next
+							i.icon-fast-forward
+				.seekbar
+					input(type='range', min='0', max='100', value='0')
+				.volume-controls
+					ul
+						li.trigger
+							i.icon-volume-up
+	.span4
+		.audioplayer.alt
+			audio
+			.player-info
+				.player-art
+					img(src='holder.js/120x120/indusrial/text:Album Art')
+				ul.player-details
+					li.title Bangarang
+					li.artist Skrillex
+					li.length 4:32
+			.player-inner
+				.controls
+					ul
+						li.previous
+							i.icon-fast-backward
+						li.playpause
+							i.icon-play
+						li.next
+							i.icon-fast-forward
+				.seekbar
+					input(type='range', min='0', max='100', value='0')
+				.volume-controls
+					ul
+						li.trigger
+							i.icon-volume-up
+.page-break#social-video
+	.title Video Player
+.row-fluid
+	.span8
+		br
+		.videoplayer
+			video
+			.player-video
+				img(src='holder.js/534x300/industrial/text:Video Poster')
+			.player-inner
+				.controls
+					ul
+						li.previous
+							i.icon-fast-backward
+						li.playpause
+							i.icon-play
+						li.next
+							i.icon-fast-forward
+				.seekbar
+					input(type='range')
+				.volume-controls
+					ul
+						li.trigger
+							i.icon-volume-up
+	.span4
+		h2 Video Player
+		p.lead ModularUI has ready made widgets, available to your disposal.
+		p One such is; The Video Player Widget.
+		p Looks just like the audioplayer widget but with a container to stream/play your video in.
+		p Can also be integrated with youtube player; if you're good at javascript. :)
+
+.page-break#social-feeds
+	.title Feeds Widget
+.row-fluid
+	.span4 
+		h2 Feeds Widget
+		p.lead Read JSON Feeds, right from your widget.
+		p Easy to intialize, works with 0 lines of code required. Everything is handled by smart javascript.
+	.span4
+		.feeds-widget(data-url='')
+			.header
+				.title FILEHIPPO
+			ul.feeds
+				li.feed
+				li.feed
+				li.feed
+				li.feed

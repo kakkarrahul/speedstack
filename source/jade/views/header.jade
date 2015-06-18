@@ -1,0 +1,20 @@
+mixin Icon(klass)
+	i.fa.fa-fw(class='#{klass}')
+
+.back-button
+	button.btn.btn-toback
+		i.fa.fa-angle-left
+
+a.title(href='#/') 
+	| Home &nbsp;
+	b.caret
+
+
+.window-controls
+	ul.list-unstyled
+		li.window-control(data-action='minimize')
+			+Icon('fa-angle-down')
+		li.window-control(data-action='toggle')
+			+Icon('fa-expand')
+		li.window-control(data-action='close')
+			+Icon('fa-remove')

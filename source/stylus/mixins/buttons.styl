@@ -1,0 +1,76 @@
+Button-Base(options={})
+	display inline-block
+	font-family font_regular
+	font-size font_size
+	
+	padding 4px 12px
+	line-height 23px
+	
+	border-radius 2px
+	inset_shadow  = inset 0px 1px 1px 0 rgba(#fff, 0.4)
+	outset_shadow = 0px 2px 4px 0 rgba(#000, 0.1)
+	
+	transition all time_1x easing_material
+	will-change color, opacity, background, box-shadow
+	
+	//box-shadow outset_shadow
+	&:hover, &:focus
+		box-shadow outset_shadow
+	&:active
+		box-shadow inset 0px 2px 4px -2px rgba(#000, 0.12)
+		
+	// No outlines
+	&:hover, &:active, &:focus, &:focus:active
+		outline none
+		
+	// Disabled
+	&.is-disabled
+		opacity opacity_disabled
+		pointer-events none
+	&.is-active
+		opacity opacity_active
+	
+
+
+Button-WithIcon()
+	// With Icons
+	i, .btn-text, .btn-icon, .caret
+		display inline-block
+		
+	i + .btn-text
+		margin-left (gutter_x/2)
+
+
+Button(options)
+	color_bg = #f8f8f8
+	if options['color']
+		color_bg = options.color
+	
+	color_text = #fff
+	if light(color_bg)
+		color_text = theme_font
+
+	color_border = rgba(#000, 0.1)
+
+	Button-Base()
+	Button-WithIcon()
+	
+
+	background-color color_bg
+	border 1px color_border solid
+	
+	color rgba(color_text, 0.72)
+	
+	&:hover, &:focus
+		color color_text
+		background-color lighten(color_bg, 8%)
+		border-color color_border
+		
+	&:active
+		if light(color_bg)
+			color color_base
+		else
+			color #fff
+		
+	&.is-active
+		color color_base

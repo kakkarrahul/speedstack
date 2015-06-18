@@ -1,0 +1,9 @@
+//- Usage
+//-   +Icon('fa-home')
+//-   +Icon('fa-spinner fa-spin')
+mixin Icon(iconclass)
+	i.fa.fa-fw(class='#{iconclass}')
+
+mixin Icon-withText(iconclass, text)
+	+Icon(iconclass)
+	.icon-text #{text}

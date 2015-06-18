@@ -1,0 +1,22 @@
+theme-shadow()
+	box-shadow 0px 4px 8px 0 rgba(#000, 0.16)
+
+theme-shadow-inset()
+	box-shadow inset 0px 3px 6px 0 rgba(#000, 0.16)
+	
+
+color-shadow(s_color = color_base, direction = 0)
+	xpos = 0
+	ypos = 4px
+	blur = 8px
+	spread = ypos*direction
+	box-shadow xpos ypos blur spread rgba(s_color, 0.16)
+	
+color-shadow-top()
+	color-shadow(color_base, -1)
+
+color-shadow-bottom()
+	color-shadow(color_base,  1)
+
+color-shadow-center()
+	color-shadow(color_base,  0)

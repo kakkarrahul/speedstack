@@ -1,0 +1,45 @@
+.view-login
+	Layer(z2)
+	background-color #fff
+
+	.login-box
+		Layer(z3, {top: 50%, left: 8%})
+		width 400px
+		height 400px
+		
+		margin-top (@height/-2)
+		
+		
+		
+.view-login .login-box
+	color theme_font
+	
+	.title
+		font-size 54px
+		font-family font_xlight 
+		color color_base
+	.title-app
+		font-size 24px
+		font-family font_regular
+		opacity 0.4
+		
+
+.view-login .login-form
+	margin-top gutter_y
+	.input-group
+		margin-left -32px
+	
+	.input-group input
+		background-color transparent
+		font-size 18px
+		font-family font_light
+		display inline-block
+		border-width 0 0 1px 0
+		padding-left 2px
+		
+	.input-group-addon
+		background-color transparent
+		//background-color theme_veil
+		border-color transparent
+		padding 4px 8px
+		

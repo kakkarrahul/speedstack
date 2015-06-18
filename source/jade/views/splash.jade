@@ -1,0 +1,8 @@
+.center-splash 
+	.greeting Home
+	.greeting-from speedstack
+
+		ul.list-unstyled
+			each link in navData
+				li
+					a(href='#/#{link.url}') #{link.title}

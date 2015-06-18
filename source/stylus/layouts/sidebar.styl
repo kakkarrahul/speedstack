@@ -1,0 +1,206 @@
+#app-sidebar
+	display flex
+	flex-direction column
+	#region-userlogo
+		flex-basis 200px
+	#region-menulist
+		flex 1
+		
+	
+#app-sidebar
+	.view-userlogo
+		padding 16px
+		//border-bottom 1px theme_border solid
+		
+		.user-pic
+			border-radius 50%
+			height 64px
+			width 64px
+			overflow hidden
+			//border 2px rgba(#000, 0.9) solid
+			//box-shadow 0px 2px 1px 0 rgba(#000, 0.32)
+			position relative
+			background-position center center
+			background-repeat no-repeat
+			background-size cover
+			background-color rgba(#000, 0.24)
+		.user-details
+			margin-left gutter_x
+		.name, .designation
+			color inherit
+			text-transform uppercase
+		.name
+			margin-top 6px
+			font-size 22px
+			font-family font_light
+			
+		.designation
+			font-family font_semibold
+			font-size 12px
+			opacity 0.6
+
+
+sidebar_width = 260px
+sidebar_width_small = 60px
+// sidebar_bghover = rgba(#000, 0.1)
+// sidebar_left_border = rgba(#000, 0.32)
+sidebar_bghover = color_base
+sidebar_left_border = rgba(#000, 0.32)
+
+SidebarMenu()
+	padding 0
+	margin 0
+	color color_font
+	font-family font_regular
+	font-size 14px
+	border-left 4px transparent solid
+	opacity 0.72
+	display flex
+	transition all time_1x easing_material
+	.menu-icon, .menu-text
+		padding 10px gutter_x
+		display inline-block
+		height 40px
+	.menu-icon
+		font-size 14px
+		i
+			opacity 0.8
+	.menu-text
+		flex 1
+		padding-left 0
+		position relative
+		&:after
+			absolute top 10px right 16px
+			content '\f105'
+			font-family 'FontAwesome'
+			display none
+	
+	&:hover, &:active
+		background-color sidebar_bghover
+		border-left-color sidebar_left_border
+		opacity 1
+		> .menu-icon i
+			opacity 1
+			animation fadeInLeft time_1x
+			&:before
+				content '\f054'
+	
+
+SubMenu()
+	Flex-Vertical()
+	.submenu
+		padding-left 16px
+
+
+
+#app-sidebar
+	.list-menus, .list-submenu
+		List-Unstyled()
+		Flex-Vertical()
+	
+	.menu, .submenu
+		flex 1
+		position relative
+
+	.menu .menu-inner, .submenu
+		SidebarMenu()
+
+	.menu.has-submenu
+		SubMenu()
+		.menu-inner .menu-text:after
+			display block
+	
+	.list-submenu
+		flex-basis 0px
+		overflow hidden
+		transition all time_2x easing_material
+	
+	// Display submenu on menu hover
+	.menu:hover, .menu.is-active, .submenu.is-active
+		.menu-inner
+			opacity 1
+			background-color sidebar_bghover
+			
+	
+	.submenu.is-active
+		border-left-color sidebar_left_border
+		background-color sidebar_bghover
+		.menu-text:after
+			display block
+	
+	.menu:hover .menu-inner
+		border-left-color sidebar_left_border
+	
+	.menu.is-active
+		.menu-inner
+			border-left-color sidebar_left_border
+		.list-submenu
+			background-color sidebar_bghover
+			box-shadow inset 0px 2px 4px -2px theme_border
+			flex 1
+			flex-basis initial
+		
+
+bg_menutext = darken(color_base, 10%)
+bg_submenu  = darken(color_base, 20%)
+
+
+SmallMode()
+	.view-userlogo
+		padding 0
+		height sidebar_width_small
+	
+	.user-pic, .user-details
+		display none
+	.menu .menu-inner .menu-icon
+		position relative
+		height sidebar_width_small
+		font-size 24px
+		padding 12px 10px
+	
+	.menu
+		.menu-inner
+			position relative
+			z-index z7
+			.menu-text
+				display none
+				absolute top left (sidebar_width_small - 4) right initial
+				width sidebar_width
+				height sidebar_width_small
+				background-color bg_menutext
+				font-size 24px
+				font-family font_light
+				padding 12px 20px
+				z-index z6
+				&:after
+					top 4px
+					right 8px
+		.list-submenu
+			background-color bg_menutext
+		&:hover
+			.menu-inner .menu-text
+				display flex
+				animation fadeInLeft time_1x
+				&:after
+					right initial
+					left -8px
+					top 0px
+			.list-submenu
+				display flex
+				animation fadeInLeft time_1x
+				animation-delay 0.06s
+			
+	.list-submenu
+		display none
+		background-color bg_submenu
+		width sidebar_width
+		absolute top sidebar_width_small left sidebar_width_small
+		z-index z6
+
+
+
+#app-sidebar.in-smallmode
+	SmallMode()
+@media (max-width: 769px)
+	#app-sidebar
+		SmallMode()

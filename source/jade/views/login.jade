@@ -1,0 +1,24 @@
+include ../mixins/icons.jade
+include ../mixins/inputs.jade
+
+.login-box
+	.title Login
+	.title-app Speedstack
+	br
+	form.login-form
+		.form-group
+			+InputGroup('fa-user', 'text', 'Username')
+		.form-group
+			+InputGroup('fa-key', 'password', 'Password')
+
+	br
+	br
+	.row
+		.col-md-6
+			.clearfix
+				a(href='/forgotpassword') Forgot Password?
+			.clearfix
+				a(href='/register') Register
+		.col-md-6.clearfix
+			.pull-right
+				button.btn.btn-default Sign In

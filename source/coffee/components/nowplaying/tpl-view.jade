@@ -1,0 +1,8 @@
+h2 Now Playing
+ul.list-unstyled
+	li.albumart
+		if artworkUrl100
+			img(data-src='#{artworkUrl100}')
+	li.title #{title}
+	li.album #{albumartist}
+	li.year #{year}

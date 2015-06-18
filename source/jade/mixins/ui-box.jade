@@ -1,0 +1,42 @@
+- var defaults = {};
+
+- var _boxheader = {controls: []}
+- _boxheader.title = { icon: 'fa fa-th', text: 'Box Title'}
+- _boxheader.controls.push({ icon: 'fa fa-chevron-up', text: 'Collapse' });
+- _boxheader.controls.push({ icon: 'fa fa-wrench', text: 'Settings' });
+- _boxheader.controls.push({ icon: 'fa fa-remove', text: 'Close' });
+
+- defaults.boxheader = _boxheader;
+
+- var _boxbase = { header: _boxheader };
+- defaults.base = _boxbase;
+
+
+mixin UI-Box-Header(options)
+	- options = options || defaults.header;
+
+	h4.title
+		i.title-icon.fa-fw(class='#{options.title.icon}')
+		span.title-text #{options.title.text}
+	
+	if !!options.controls
+		ul.controls
+			each control in options.controls
+				li.control(data-toggle='tooltip' title='#{control.text}')
+					i.control-icon.fa-fw(class='#{control.icon}')
+
+
+mixin UI-Box(width, options)
+	- options = options || defaults.base
+	
+	if Number.isInteger(width)
+		- options.width = width;
+	
+	div(class='col-md-#{width}')
+		section(class='box')&attributes(attributes)
+			.box-header
+				+UI-Box-Header(options.header)
+			.box-body
+		
+			if !!options.footer
+				.box-footer

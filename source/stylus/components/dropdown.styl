@@ -1,0 +1,128 @@
+dropdown_border = theme_border
+dropdown_bg = theme_widget
+
+.dropdown
+	position relative
+	
+	.dropdown-trigger
+		cursor pointer
+		i
+			transition all time_1x ease
+		&.is-active
+			i
+				transform rotateZ(180deg)
+
+	.dropdown-menu
+		display none
+		absolute left right -1px left
+		z-index z6
+		min-width 160px
+		width 100%
+			
+		background-color dropdown_bg
+		border 1px dropdown_border solid
+		border-radius 0px
+		
+		margin-top 8px
+		
+		animation zoomOut time_1x
+		
+		shadow_inside = inset 0px 4px 8px -4px theme_border
+		shadow_outside= 0px 4px 12px 0px rgba(#000, 0.28)
+		box-shadow shadow_inside, shadow_outside
+
+		&.dropdown-right
+			right 0
+			left initial
+
+.dropdown
+	.dropdown-menu
+		&:after, &:before
+			content ''
+			absolute top -16px left 11px
+			border 8px transparent solid
+		&:after
+			border-bottom-color dropdown_border
+			z-index z1
+		&:before
+			top -15px
+			border-bottom-color dropdown_bg
+			z-index z2
+			
+		&.dropdown-right
+			&:after, &:before
+				left initial
+				right 11px
+			
+
+.dropdown		
+	.dropdown-menu
+		> li
+			padding 4px 12px
+			font-family font_light
+			font-size font_size
+			color theme_font
+			user-select none
+			cursor default
+			&:hover:not(.divider)
+				background-color theme_veil
+			&:first-child
+				margin-top 4px
+			> a
+				text-decoration none
+				color inherit
+				margin -4px -12px
+				padding 9px 16px
+				display block
+			
+		> li.divider
+			padding 0
+			margin  0
+			background-color dropdown_border
+			width 100%
+			height 1px
+			
+		> li
+			i
+				margin-right (gutter_x/2)
+
+
+
+.dropdown.is-open
+	.dropdown-menu
+		display block
+		animation zoomIn time_1x
+		
+		transform-origin top left
+		&.dropdown-right
+			transform-origin top right
+			
+
+/* Twitter Typeahead
+ * 
+ */
+
+.twitter-typeahead
+	width 100%
+	.tt-dropdown-menu
+		width 100%
+		margin-top 0px
+		background-color inherit
+		border 1px color_base solid
+		border-radius 0 0 2px 2px
+		box-shadow 0px 6px 8px 0px rgba(#000, 0.24)
+		border-top none
+	.tt-cursor
+		background-color rgba(#000, 0.12)
+
+	.tt-suggestions
+		width 100%
+	.tt-hint
+		color lighten(theme_font, 16%)
+	.tt-suggestion
+		margin 0
+		padding 12px 12px 10px 12px
+		line-height 24px
+		font-family font_regular
+		font-size 14px
+		color theme_font

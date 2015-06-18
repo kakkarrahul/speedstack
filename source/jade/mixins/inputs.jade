@@ -1,0 +1,33 @@
+//- Input Elements
+//- Try to use inputs through mixins as much as possible
+//- This allows for preserving the bootstrap styles, as well as modifying 
+//- all inputs across the theme in a unified manner
+
+mixin Input(type, placeholder)
+	- var _type = !!type ? type : 'text'
+	- var _hldr = !!placeholder ? placeholder : 'Enter text'
+	input.form-control(type='#{_type}', placeholder='#{_hldr}')
+
+mixin Checkbox(checked)
+	- var _s = !!checked ? checked : false
+	input.form-control(type='checkbox', checked='#{checked}')
+
+mixin Radiobox(checked)
+	- var _s = !!checked ? checked : false
+	input.form-control(type='radio', checked='#{checked}')
+
+
+mixin Textarea(placeholder)
+	- var _hldr = !!placeholder ? placeholder : 'Enter Text Here'
+	textarea.form-control(placeholder='#{_hldr}')
+
+
+
+
+
+//- Shorthands for input groups with only icons and an input
+mixin InputGroup(iconclass, type, placeholder)
+	.input-group
+		.input-group-addon
+			+Icon(iconclass)
+		+Input(type, placeholder)

@@ -1,0 +1,60 @@
+ui-box-header()
+	clearfix()
+	.title
+		float left
+	.controls
+		float right
+		list-style none
+		padding 0
+		margin 0
+		
+	
+	.control
+		display inline-block
+		font-size 14px
+		width 32px
+		color theme_font
+		padding 4px 0 6px 0
+		
+		text-align center
+		&:hover, &:active
+			color color_base
+		&:active
+			relative top 1px
+		
+	.controls
+		position relative
+		&:after
+			absolute top right
+			padding 6px 12px
+			font-family 'FontAwesome'
+			content '\f142'
+	
+	.controls .control
+		display none
+	.controls:hover
+		&:after
+			display none
+		.control
+			display inline-block
+		
+
+ui-box()
+	border 1px theme_border solid
+
+	background-color theme_widget
+	border-radius 2px
+	transition all time_1x ease
+	padding 0
+	transition all time_2x easing_material
+	&:hover
+		border-color 1px rgba(#000, 0.24) solid
+		box-shadow 0px 2px 4px 0 rgba(#000, 0.12)
+
+	.box-header
+		ui-box-header()
+	.box-body
+		padding gutter_x
+
+.box
+	ui-box()
