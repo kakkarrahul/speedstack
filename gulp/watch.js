@@ -6,7 +6,7 @@ gulp.task('watch', function() {
 	livereload.listen();
 
 	gulp.watch('./source/coffee/**/*.coffee', ['coffee'])
-	gulp.watch('./source/stylus/**/*.styl', ['stylus:main'])
+	gulp.watch('./source/stylus/**/*.styl', ['stylus:main', 'stylus:modules'])
 	gulp.watch('./source/jade/**/*.jade', ['jade:main'])
 	gulp.watch('./source/coffee/**/*.styl', ['stylus:modules'])
 	gulp.watch('./source/coffee/**/*.jade', ['jade:modules'])
