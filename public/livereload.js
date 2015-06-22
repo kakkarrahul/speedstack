@@ -4,7 +4,7 @@
 
   _ref = require('./protocol'), Parser = _ref.Parser, PROTOCOL_6 = _ref.PROTOCOL_6, PROTOCOL_7 = _ref.PROTOCOL_7;
 
-  Version = '2.2.1';
+  Version = '2.2.2';
 
   exports.Connector = Connector = (function() {
     function Connector(options, WebSocket, Timer, handlers) {
@@ -12,11 +12,10 @@
       this.WebSocket = WebSocket;
       this.Timer = Timer;
       this.handlers = handlers;
-      
-      var uri_app = "ws://127.0.0.1:" + this.options.port + "/livereload";
-      var uri_web = "ws://" + this.options.host + ":" + this.options.port + "/livereload";
-      this._uri = !chrome.runtime.reload ? uri_web : uri_app;
-      
+      if (!chrome.runtime.reload)
+        this._uri = "ws" + (this.options.https ? "s" : "") + "://" + this.options.host + ":" + this.options.port + "/livereload";
+      else
+        this._uri = "ws://127.0.0.1:" + this.options.port + "/livereload";
       this._nextDelay = this.options.mindelay;
       this._connectionDesired = false;
       this.protocol = 0;
@@ -282,7 +281,8 @@
 
 },{}],4:[function(require,module,exports){
 (function() {
-  var Connector, LiveReload, Options, Reloader, Timer;
+  var Connector, LiveReload, Options, Reloader, Timer,
+    __hasProp = {}.hasOwnProperty;
 
   Connector = require('./connector').Connector;
 
@@ -294,11 +294,15 @@
 
   exports.LiveReload = LiveReload = (function() {
     function LiveReload(window) {
+      var k, v, _ref;
       this.window = window;
       this.listeners = {};
       this.plugins = [];
       this.pluginIdentifiers = {};
-      this.console = this.window.location.href.match(/LR-verbose/) && this.window.console && this.window.console.log && this.window.console.error ? this.window.console : {
+      this.console = this.window.console && this.window.console.log && this.window.console.error ? this.window.location.href.match(/LR-verbose/) ? this.window.console : {
+        log: function() {},
+        error: this.window.console.error.bind(this.window.console)
+      } : {
         log: function() {},
         error: function() {}
       };
@@ -306,9 +310,20 @@
         this.console.error("LiveReload disabled because the browser does not seem to support web sockets");
         return;
       }
-      if (!(this.options = Options.extract(this.window.document))) {
-        this.console.error("LiveReload disabled because it could not find its own <SCRIPT> tag");
-        return;
+      if ('LiveReloadOptions' in window) {
+        this.options = new Options();
+        _ref = window['LiveReloadOptions'];
+        for (k in _ref) {
+          if (!__hasProp.call(_ref, k)) continue;
+          v = _ref[k];
+          this.options.set(k, v);
+        }
+      } else {
+        this.options = Options.extract(this.window.document);
+        if (!this.options) {
+          this.console.error("LiveReload disabled because it could not find its own <SCRIPT> tag");
+          return;
+        }
       }
       this.reloader = new Reloader(this.window, this.console, Timer);
       this.connector = new Connector(this.options, this.WebSocket, Timer, {
@@ -376,6 +391,7 @@
           };
         })(this)
       });
+      this.initialized = true;
     }
 
     LiveReload.prototype.on = function(eventName, handler) {
@@ -404,6 +420,9 @@
 
     LiveReload.prototype.shutDown = function() {
       var _base;
+      if (!this.initialized) {
+        return;
+      }
       this.connector.disconnect();
       this.log("LiveReload disconnected.");
       return typeof (_base = this.listeners).shutdown === "function" ? _base.shutdown() : void 0;
@@ -415,6 +434,9 @@
 
     LiveReload.prototype.addPlugin = function(pluginClass) {
       var plugin;
+      if (!this.initialized) {
+        return;
+      }
       if (this.hasPlugin(pluginClass.identifier)) {
         return;
       }
@@ -437,6 +459,9 @@
 
     LiveReload.prototype.analyze = function() {
       var plugin, pluginData, pluginsData, _i, _len, _ref;
+      if (!this.initialized) {
+        return;
+      }
       if (!(this.connector.protocol >= 7)) {
         return;
       }
@@ -466,6 +491,7 @@
 
   exports.Options = Options = (function() {
     function Options() {
+      this.https = false;
       this.host = null;
       this.port = 35729;
       this.snipver = null;
@@ -497,6 +523,7 @@
       element = _ref[_i];
       if ((src = element.src) && (m = src.match(/^[^:]+:\/\/(.*)\/z?livereload\.js(?:\?(.*))?$/))) {
         options = new Options();
+        options.https = src.indexOf("https") === 0;
         if (mm = m[1].match(/^([^\/:]+)(?::(\d+))?$/)) {
           options.host = mm[1];
           if (mm[2]) {
@@ -754,10 +781,10 @@
     };
 
     Reloader.prototype.reloadPage = function() {
-    	if (!!chrome.runtime.reload)
-    		return chrome.runtime.reload();
-    	else
-      	return this.window.document.location.reload();
+      if (!chrome.runtime.reload)
+        return this.window.document.location.reload();
+      else
+        return chrome.runtime.reload();
     };
 
     Reloader.prototype.reloadImages = function(path) {
