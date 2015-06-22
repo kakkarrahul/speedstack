@@ -6,7 +6,9 @@
 	z-index z1
 	overflow hidden
 	Flex-Horizontal()
+	background-color theme_bg
 	
+.view-songs
 	.region-now-playing, .region-songs-list
 		margin-bottom 80px
 	
@@ -17,29 +19,3 @@
 		flex 4
 		flex-wrap wrap
 		overflow-y auto
-
-	.control-bar
-		absolute bottom left right
-		z-index z4
-		Flex-Horizontal()
-		height 80px
-
-.player-controls
-	list-style none
-	.control
-		display inline-block
-		padding 24px
-		font-size 1.6em
-
-
-// Theme Stuff
-.view-songs
-	color_black = #2a2a2a
-	trans_black = rgba(#000, 0.24)
-	background-color color_black
-	
-	.control-bar
-		background-color trans_black
-	.player-controls .control
-		color #fff
-		opacity 0.6

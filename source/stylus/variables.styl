@@ -97,17 +97,17 @@ color_base = color_blue
 color_base_border = darken(color_base, 10%)
 
 
-// theme_bg = #ececec
-// theme_base = #fafafa
-// theme_border = rgba(#000, 0.16)
-// theme_widget = #fff
-// theme_veil = rgba(#000, 0.06)
-
-theme_bg = #2a2a2a
-theme_base = #323232
-theme_border = rgba(#000, 0.18)
-theme_widget = #282828
+theme_bg = #ececec
+theme_base = #fafafa
+theme_border = rgba(#000, 0.16)
+theme_widget = #fff
 theme_veil = rgba(#000, 0.06)
+
+// theme_bg = #333
+// theme_base = #4d4d4d
+// theme_border = rgba(#000, 0.18)
+// theme_widget = #282828
+// theme_veil = rgba(#000, 0.06)
 
 is_theme_light = (luminosity(theme_base)) > (0.36)
 is_color_light = (luminosity(color_base)) > (0.36)
@@ -122,7 +122,6 @@ if is_color_light
 	color_font = theme_font
 else
 	color_font = #e8e8e8
-
 
 
 /* Others Settings

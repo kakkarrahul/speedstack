@@ -1,12 +1,9 @@
 
 HeaderButton()
-	font_color = #fff
 	border none
 	border-top 4px transparent solid
 	padding 12px 16px
 	opacity .64
-
-	color font_color
 	&:hover, &:active, &:focus
 		opacity 1
 		box-shadow none
@@ -27,8 +24,8 @@ HeaderButton()
 		// stop2 = rgba(#fff, 0)
 		// background-image linear-gradient(top, stop1, stop2)
 		// background-color color_base
-		background-color #2a2a2a
-		color #fff
+		background-color theme_widget
+		color theme_font
 
 #app-header
 	.back-button, .window-controls, .title
@@ -42,6 +39,8 @@ HeaderButton()
 		float right
 	.title
 		HeaderButton()
+		
+		color color_base
 		font-size 18px
 		font-family font_light
 		padding 10px 16px
