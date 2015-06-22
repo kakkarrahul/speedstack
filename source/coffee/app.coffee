@@ -61,8 +61,6 @@ define [
 			i = 0
 			$.ajaxSetup
 				crossdomain: true
-				xhrFields:
-					withCredentials: false
 				beforeSend: ->
 					Radio.trigger 'global', 'loader:start'
 					i++
