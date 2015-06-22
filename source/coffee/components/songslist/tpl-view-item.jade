@@ -1,4 +1,5 @@
 .song-inner
-	h4.title #{title || trackName}
-	h4.album #{albumartist || artistName}
-	h4.year #{year}
+	h4.title= trackName || title
+	h4.album= collectionName || (album ? album: album_artist)
+	h4.artist= artistName || artist
+	h4.year= trackReleaseDate ? trackReleaseDate.substr(0,4) : ( year ? year.substr(0,4): '')

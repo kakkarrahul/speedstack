@@ -1,8 +1,6 @@
 .view-songs-list
 	.song-item
-		display block
-		height 80px
-		
+		display block	
 		&:hover
 			background-color rgba(#000, 0.12)
 		&:active
@@ -15,9 +13,30 @@
 		flex-basis 300px		
 
 	.song-inner
+		Flex-Horizontal()
+		justify-content space-between
+		align-items center
 		padding 12px 24px
 		box-sizing border-box
 		width 100%
 		
 		> h4
 			margin 0
+	
+	// Layout
+	.title
+		flex 2
+	.album
+		flex 1
+	.artist
+		flex 1
+	.year
+		flex-basis 70px
+		text-align right
+		
+		
+	
+	.title
+		whitespace nowrap
+		overflow hidden
+		text-overflow ellipsis
