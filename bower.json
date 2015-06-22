@@ -27,6 +27,7 @@
     "require-css": "*",
     "requirejs-plugins": "*",
     "SourceSansPro": "*",
-    "momentjs": "~2.10.2"
+    "momentjs": "~2.10.2",
+    "chartjs": "~1.0.2"
   }
 }

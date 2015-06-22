@@ -3,6 +3,7 @@ define [
 	'radio'
 ], (Marionette, Radio)->
 
+	approuter = Radio.channel 'approuter'
 	class AppRouter extends Marionette.AppRouter
 		
 		appRoutes:
@@ -10,13 +11,16 @@ define [
 			
 			'login(/)' : 'login'
 			'logout(/)': 'logout'
-			'yo(/)': 'yopage'
-
-			'widgets(/)': 'widgets'
+			
 			'charts(/)': 'charts'
 			'songs(/)': 'songs'
 			
 		initialize: (options)->
+			@listenTo approuter, 'go:back', @goBack
 			console.log 'AppRouter::OK'
+
+		goBack: ->
+			console.log 'Going back: '
+			do @back
 
 	return AppRouter

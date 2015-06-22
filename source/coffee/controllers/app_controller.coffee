@@ -25,31 +25,26 @@ define [
 		
 		# Controllers
 		
-		login:  -> @RM.load Content: 'views/login'
-		logout: -> @RM.load Content: 'views/logout'
+		login:  -> 
+			@RM.load 
+				Header : 'views/header'
+				Content: 'views/login'
+		logout: -> 
+			@RM.load 
+				Header : 'views/header'
+				Content: 'views/logout'
 
 		home: ->
 			@RM.load
 				Header : 'views/header'
-				Content: 'views/splash'
-
-		yopage: -> 
-			@RM.load
-				Header: 'views/header'
-				Content: 'views/yoview'
-		widgets: ->
-			@RM.load 
-				Header:  'views/header'
-				Content: 'views/widgets'
-
-		charts: ->
-			@RM.load 
-				Header: 'views/header'
-				Content: 'views/charts'
-			
+				Content: 'views/splash'			
 		songs: ->
 			@RM.load 
 				Header:  'views/header'
-				Content: 'layouts/songs'	
+				Content: 'layouts/songs'
+		charts: ->
+			@RM.load 
+				Header:  'views/header'
+				Content: 'views/charts'
 			
 	return AppController

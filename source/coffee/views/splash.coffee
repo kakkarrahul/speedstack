@@ -11,9 +11,7 @@ define [
 
 		model: new Backbone.Model
 			navData: [
-				{url: ''  , title: 'Home'}
-				{url: 'yo', title: 'Yo Page'}
-				{url: 'widgets', title: 'Widgets'}
+				{url: 'login', title: 'Login'}
 				{url: 'songs', title: 'Songs'}
 				{url: 'charts', title: 'Charts'}
 			]

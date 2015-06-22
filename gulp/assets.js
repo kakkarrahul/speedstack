@@ -12,7 +12,8 @@ module.exports = {
       './vendor/requirejs/require.js',
       './vendor/momentjs/moment.js',
       './vendor/typeahead.js/dist/typeahead.bundle.js',
-      './vendor/bootstrap/dist/js/bootstrap.js'
+      './vendor/bootstrap/dist/js/bootstrap.js',
+      './vendor/chartjs/Chart.js'
     ]
   },
   css: {

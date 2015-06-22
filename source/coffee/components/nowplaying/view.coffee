@@ -24,10 +24,11 @@ define [
 			@listenTo player, 'data:fetched', @update
 
 		update: (song)->
+			@model.clear().set song.toJSON()
+
 			song
 				.fetchData()
-				.then =>
-					@model.clear().set song.toJSON()
+				.then => @model.set song.toJSON()
 
 		fetchImage: (url)-> return new Promise (resolve, reject)->
 			xhr = new XMLHttpRequest()

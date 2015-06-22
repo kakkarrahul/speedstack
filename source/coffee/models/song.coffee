@@ -1,7 +1,12 @@
 define ['backbone'], (Backbone)->
 
 	class Song extends Backbone.Model
+
 		query_url: 'https://itunes.apple.com/search?term=__query__&limit=5'
+		
+		defaults:
+			year: '-'
+
 		toQuery: ->
 			str = "#{@get('title')}+#{@get('album_artist')}"
 			return str.replace(/ /g, '+')
