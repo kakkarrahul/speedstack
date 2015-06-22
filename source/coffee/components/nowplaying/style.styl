@@ -1,21 +1,31 @@
 .view-now-playing
 	padding 24px
 	ul li
-		color #ddd
+		color theme_font
 		opacity 0.6
-	
+		Flex-Horizontal()
+		justify-content space-between
+
 	.title
 		font-family font_light
 		font-size 20px
+
 	.album
 		font-size 14px
 		font-family font_regular
+	
 	.year
 		font-size 12px
 		font-family font_semibold
 	
-	li.albumart img
+	li.albumart
+		margin 20px 0 
 		width 160px
 		height 160px
 		border 1px theme_border solid
-		
+		background-color color_base
+		.blob-image
+			width 100%
+			height 100%
+			background-size cover
+			background-repeat no-repeat

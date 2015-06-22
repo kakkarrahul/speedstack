@@ -9,7 +9,7 @@ define [
 
 	model = new Backbone.Model
 		title: 'Select a song'
-		albumartist: 'No Artist'
+		album_artist: 'No Artist'
 		year: '-'
 
 
@@ -17,34 +17,17 @@ define [
 		template: tpl
 		className: 'view-now-playing'
 		model: model
-		query_url: 'https://itunes.apple.com/search?term=__query__&limit=5'
 
 		initialize: ->
 			@listenTo @model, 'change', @render
 			@listenTo player, 'play:song', @update
-			@listenTo player, 'play:song', @fetchData
 			@listenTo player, 'data:fetched', @update
 
-
-		toQuery: ->
-			str = "#{@model.get('title')}+#{@model.get('albumartist')}"
-			return str.replace(/ /g, '+')
-
-		logError: (err)->
-			console.error 'NowPlaying: Fetch failed.', err
-		
-		fetchData: ->
-			query = do @toQuery
-			url = @query_url.replace '__query__', query
-			
-			Promise
-				.resolve $.getJSON(url)
-					.catch @logError
-				.then (resp)=>
-					@model.set resp.results[0]
-
-		update: (newsong)->
-			@model.set newsong.toJSON()
+		update: (song)->
+			song
+				.fetchData()
+				.then =>
+					@model.clear().set song.toJSON()
 
 		fetchImage: (url)-> return new Promise (resolve, reject)->
 			xhr = new XMLHttpRequest()
@@ -58,12 +41,16 @@ define [
 
 		onRender: ->
 			self = this
-			imgs = @$el.find 'img'
-			imgs.each ->
+			targets = @$el.find '.blob-image'
+			targets.each ->
 				url = $(this).attr 'data-src'
-				self
-					.fetchImage url
-					.then (bloburl)=> $(this).attr 'src', bloburl
+				if url is ''
+					return
+				self.fetchImage(url).then (bloburl)=>
+					if $(this).get(0).tagName is "IMG"
+						$(this).attr 'src', bloburl
+					else
+						$(this).css 'background-image', "url('" + bloburl + "')"
 
 
 

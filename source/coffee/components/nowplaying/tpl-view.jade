@@ -1,8 +1,9 @@
 h2 Now Playing
 ul.list-unstyled
 	li.albumart
-		if artworkUrl100
-			img(data-src='#{artworkUrl100}')
-	li.title #{title}
-	li.album #{albumartist}
-	li.year #{year}
+		- var _src = artworkUrl100 ? artworkUrl100 : '';
+		.album-image.blob-image(data-src='#{_src}')
+	
+	li.title= trackName || title
+	li.album= collectionName || (album ? album: album_artist)
+	li.year= trackReleaseDate ? trackReleaseDate.substr(4) : year
