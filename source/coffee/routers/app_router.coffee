@@ -14,6 +14,8 @@ define [
 			
 			'charts(/)': 'charts'
 			'songs(/)': 'songs'
+			'yo(/)': 'yopage'
+			'foo(/)': 'foopage'
 			
 		initialize: (options)->
 			@listenTo approuter, 'go:back', @goBack
