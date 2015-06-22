@@ -10,9 +10,14 @@ define [
 
 		ui:
 			wcontrol: '.window-control'
+			navBack: '.btn-toback'
 
 		events:
 			'click @ui.wcontrol': 'windowControl'
+			'click @ui.navBack': 'goBack'
+
+		goBack: ->
+			Radio.trigger 'approuter', 'go:back'
 
 		windowControl: (e)->
 			$control = $(e.currentTarget)

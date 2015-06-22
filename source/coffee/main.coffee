@@ -42,7 +42,7 @@ requirejs ['jquery', 'app'], ($, App)->
 		sc.type = 'text/javascript'
 		sc.src  = `!chrome.runtime.reload
 			? "http://127.0.0.1:35729/livereload.js"
-			: "./livereload-chrome.js"`
+			: window.location.origin + "/public/livereload.js"`
 		document.head.appendChild(sc)
 	)
 
