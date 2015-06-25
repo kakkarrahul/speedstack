@@ -6,11 +6,15 @@ Setup
 - Now run `npm install && bower install`
 
 
-Server
-======
-In your terminal `http-server -p 4200`
+Scanning Songs
+==============
+Replace `music_dir` in scanner.py with your mp3 folder path.
+Then run `python scanner.py`
 
-Build
+Requires mutagen.
+
+
+Run
 ======
 Run `gulp` to build files and watch for changes.     
 Your stack is running and can be viewed on [localhost:4200](http://localhost:4200)
