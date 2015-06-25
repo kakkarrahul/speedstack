@@ -1,12 +1,5 @@
-/* Variables
- * Strictly use underscore separated lowercase variable names
- */
-
-/*
- *	Colors
- *  These are defaults from material design palette
- *  http://www.google.com/design/spec/style/color.html#color-color-palette
- */
+// Colors from material design palette
+// http://www.google.com/design/spec/style/color.html#color-color-palette
 color_red  = #F44336
 color_pink = #E91E63
 color_purple = #9C27B0
@@ -43,9 +36,9 @@ line_height = 28px
 font_size = 14px
 
 
-/* Z-Index Scale
- * 
- */
+
+
+// Z-Index Scale
 z0 = 0
 z1 = 100
 z2 = 200
@@ -58,22 +51,19 @@ z8 = 800
 z9 = 900
 
 
-/* Time scale
- * Uniform Animations
- */
+
+// Time scale for uniform animations.
 time_1x = 0.1s
 time_2x = time_1x * 2
 time_3x = time_1x * 3
 time_4x = time_1x * 4
 
 
-/* Opacity States
- * All states should be maintained with opacity
- */
+// Opacity States
 opacity_default  = .82
 opacity_disabled = .64
 opacity_hover  = 1
-opacity_active = 1 		// Just an alias
+opacity_active = 1 
 
 
 
@@ -86,46 +76,37 @@ gutter_y = 24px
 // Easings
 easing_material = unquote('cubic-bezier(.55,0,.1,1)')
 
-
-
-/* Theme
- * Will be later moved to themes/default.styl
- */
-
-
-color_base = color_blue
-color_base_border = darken(color_base, 10%)
-
-
-theme_bg = #ececec
+// Light Theme
+theme_bg = #fff
 theme_base = #fafafa
 theme_border = rgba(#000, 0.16)
 theme_widget = #fff
 theme_veil = rgba(#000, 0.06)
 
-// theme_bg = #333
-// theme_base = #4d4d4d
-// theme_border = rgba(#000, 0.18)
-// theme_widget = #282828
-// theme_veil = rgba(#000, 0.06)
+// Dark Theme
+/*
+theme_bg = #1d1d1d
+theme_base = #323232
+theme_border = rgba(#000, 0.18)
+theme_widget = #282828
+theme_veil = rgba(#000, 0.06)
+*/
+
+
+// Base Color
+color_base = color_blue
+color_base_border = darken(color_base, 10%)
 
 is_theme_light = (luminosity(theme_base)) > (0.36)
 is_color_light = (luminosity(color_base)) > (0.36)
 
-if is_theme_light
-	theme_font = #888
-else
-	theme_font = #e2e2e2
-	
-
-if is_color_light
-	color_font = theme_font
-else
-	color_font = #e8e8e8
+theme_font = is_theme_light ? #888 : #6e6e6e
+color_font = is_color_light ? theme_font : #f2f2f2
 
 
-/* Others Settings
- */
+
+
+/* Other Settings */
 // Header
 header_height = 50px
 
