@@ -6,27 +6,29 @@
 	.title
 		font-family font_light
 		font-size 20px
+		margin-bottom 6px
 
 	.album, .artist
+		color lighten(theme_font, 20%)
 		font-size 14px
-		font-family font_regular	
+		font-family font_semibold	
 	.year
+		margin-top 4px
 		font-size 12px
 		font-family font_semibold
 	
 	li.albumart
-		
 		margin 20px 0 
 		width 160px
 		height 160px
 		border 1px theme_border solid
-		animation flip 0.3s
-		
+		animation fadeInLeft 0.3s
 		.blob-image
 			width 100%
 			height 100%
 			background-size cover
 			background-repeat no-repeat
+			
 			
 			
 
@@ -35,7 +37,7 @@
 	
 	.title, .album, .artist, .year
 		animation fadeInUp 0.1s
-	
+
 	.album
 		animation-duration 0.15s
 	.artist
