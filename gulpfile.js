@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var spawn = require('child_process').spawn;
 var gutil = require('gulp-util');
+var serve = require('gulp-serve');
 
 Assets = require('./gulp/assets');
 
@@ -21,8 +22,13 @@ gulp.task('songs', function(cb){
 	child.on('close', function(){cb();});
 });
 
+gulp.task('server', serve({
+	root: ['public'],
+	port: 4200
+}));
+
 gulp.task('build', ['copy', 'coffee', 'stylus', 'jade']);
-gulp.task('default', ['build', 'watch']);
+gulp.task('default', ['build', 'watch', 'server']);
 
 
 module.exports = gulp;
