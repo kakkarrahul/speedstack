@@ -9,5 +9,6 @@ include /mixins/icons.jade
 		li.control.to-next
 			+Icon('fa-forward')
 
-	.player-el
-		audio(controls, preload, autoplay)
+	.seekbar
+		.seekbar-track
+		.seekbar-thumb(data-completed='0')
