@@ -1,11 +1,11 @@
-mixin Icon(klass)
-	i.fa.fa-fw(class='#{klass}')
+include /mixins/icons.jade
 
 //- .back-button
 //- 	button.btn.btn-toback
 //- 		i.fa.fa-angle-left
 
-a.title(href='#/') Home
+a.title(href='#/') 
+	+Icon_With_Text('fa-home', 'Home')
 
 
 .window-controls

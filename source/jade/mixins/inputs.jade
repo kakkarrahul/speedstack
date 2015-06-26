@@ -6,28 +6,51 @@
 mixin Input(type, placeholder)
 	- var _type = !!type ? type : 'text'
 	- var _hldr = !!placeholder ? placeholder : 'Enter text'
-	input.form-control(type='#{_type}', placeholder='#{_hldr}')
+	input.form-control(type='#{_type}', placeholder='#{_hldr}')&attributes(attributes)= name
 
 mixin Checkbox(checked)
 	- var _s = !!checked ? checked : false
-	input.form-control(type='checkbox', checked='#{checked}')
+	input.form-control(type='checkbox', checked='#{checked}')&attributes(attributes)= name
 
 mixin Radiobox(checked)
 	- var _s = !!checked ? checked : false
-	input.form-control(type='radio', checked='#{checked}')
+	input.form-control(type='radio', checked='#{checked}')&attributes(attributes)= name
 
 
-mixin Textarea(placeholder)
+mixin Textarea(placeholder, text)
 	- var _hldr = !!placeholder ? placeholder : 'Enter Text Here'
-	textarea.form-control(placeholder='#{_hldr}')
+	if !text
+		textarea.form-control(placeholder='#{_hldr}')&attributes(attributes)= name
+	else
+		textarea.form-control(placeholder='#{_hldr}')&attributes(attributes)= name
+			| #{text}
 
 
-
+mixin Field(label, icon)
+	.input-field
+		.floating-label&attributes(attributes)
+			if block
+				block
+		
+			if !icon
+				span.f-label #{label}
+			else
+				span.f-label
+					+Icon_With_Text(icon, label)
 
 
 //- Shorthands for input groups with only icons and an input
-mixin InputGroup(iconclass, type, placeholder)
-	.input-group
+mixin InputGroup(iconclass, type, placeholder, value)
+	.input-group&attributes(attributes)
 		.input-group-addon
 			+Icon(iconclass)
-		+Input(type, placeholder)
+		+Input(type, placeholder)(value='#{value}')
+
+
+mixin Floating-Label-Input(options)
+	.input-field
+		.floating-label&attributes(attributes)= name
+			| #{options['label']}
+
+		if block
+			block
