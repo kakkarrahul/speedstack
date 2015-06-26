@@ -1,5 +1,9 @@
+js_root = '/js'
 
-js_root = `!!chrome.app.runtime ? '/public/js' : '/js'`
+((chrome)->
+	if chrome and chrome.app and chrome.app.runtime
+		js_root = '/public/js'
+)(window.chrome)
 
 requirejs.config
 	waitSeconds: 24
@@ -45,6 +49,17 @@ requirejs ['jquery', 'app'], ($, App)->
 			: window.location.origin + "/public/livereload.js"`
 		document.head.appendChild(sc)
 	)
+
+
+	window.fetch_blob = (url, ret_as)-> return new Promise (resolve, reject)->
+		xhr = new XMLHttpRequest()
+		xhr.open 'GET', url, true
+		xhr.responseType = 'blob'
+		xhr.onload = (e)->
+			blob_url = window.URL.createObjectURL(this.response)
+			resolve blob_url			
+		xhr.onerror = (err)-> reject(err)
+		do xhr.send
 
 	window.App = App
 	do App.start

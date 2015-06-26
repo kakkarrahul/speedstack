@@ -1,0 +1,18 @@
+.view-bg
+	Layer(z0)
+	.loading-animation
+		Layer(z2, {bottom: 'initial'})
+		
+	.bg-container
+		Layer(z1)
+		overflow hidden
+		background-repeat no-repeat
+		background-size cover
+		background-position center center
+		will-change filter, animation
+		
+		-webkit-filter unquote('opacity(0)')
+		&.is-visible
+			-webkit-filter unquote('opacity(0.4) blur(4px)')
+			animation rollIn 0.4s
+			
