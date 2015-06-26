@@ -21,24 +21,15 @@ define [
 		initialize: ->
 			@listenTo @model, 'change', @render
 			@listenTo player, 'play:song', @update
-			@listenTo player, 'data:fetched', @update
 
 		update: (song)->
 			@model.clear().set song.toJSON()
 
 			song
 				.fetchData()
-				.then => @model.set song.toJSON()
-
-		fetchImage: (url)-> return new Promise (resolve, reject)->
-			xhr = new XMLHttpRequest()
-			xhr.open 'GET', url, true
-			xhr.responseType = 'blob'
-			xhr.onload = (e)->
-				blob_url = window.URL.createObjectURL(this.response)
-				resolve(blob_url)
-			xhr.onerror = (err)-> reject(err)
-			do xhr.send
+				.then => 
+					@model.set song.toJSON()
+					player.trigger 'data:fetched', @model
 
 		onRender: ->
 			self = this
@@ -47,7 +38,7 @@ define [
 				url = $(this).attr 'data-src'
 				if url is ''
 					return
-				self.fetchImage(url).then (bloburl)=>
+				fetch_blob(url).then (bloburl)=>
 					if $(this).get(0).tagName is "IMG"
 						$(this).attr 'src', bloburl
 					else
