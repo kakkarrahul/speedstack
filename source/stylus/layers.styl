@@ -4,22 +4,6 @@
  */
 
 
-/**
- * Layer Mixin
- * Really handy to produce absolute layer layouts
- * Usage:
- * 		Layer({z: z1, top: header_height, right: sidebar_width})
- */
-
-Layer(zIndex, options={})
-	position absolute
-	top     options["top"]    ? options["top"]    : 0
-	left    options["left"]   ? options["left"]   : 0
-	bottom  options["bottom"] ? options["bottom"] : 0
-	right   options["right"]  ? options["right"]  : 0
-
-	z-index zIndex
-
 html
 	min-height 100%
 	min-width 100%

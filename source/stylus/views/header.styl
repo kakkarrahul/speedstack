@@ -7,10 +7,10 @@ HeaderButton()
 	&:hover, &:active, &:focus
 		opacity 1
 		box-shadow none
-		border-top-color rgba(#000, 0.12)
+		border-top-color rgba(color_base, 0.6)
 
 	&:active
-		border-top-color rgba(#000, 0.28)
+		border-top-color color_base
 	
 
 #app-header
@@ -24,7 +24,7 @@ HeaderButton()
 		// stop2 = rgba(#fff, 0)
 		// background-image linear-gradient(top, stop1, stop2)
 		// background-color color_base
-		background-color theme_bg
+		background-color theme_panel
 		color theme_font
 
 #app-header
@@ -39,11 +39,13 @@ HeaderButton()
 		float right
 	.title
 		HeaderButton()
-		
 		color color_base
 		font-size 18px
-		font-family font_light
+		font-family font_regular
 		padding 10px 16px
+		.icon-text
+			margin-left 6px
+			display inline-block
 
 #app-header .back-button .btn-toback
 	HeaderButton()
@@ -60,6 +62,7 @@ HeaderButton()
 	position relative
 	height header_height
 	min-width 50px
+	color #fff
 	&:after
 		absolute top 16px right 24px
 		font-family 'FontAwesome'
@@ -77,3 +80,4 @@ HeaderButton()
 #app-header .window-control
 	display inline-block
 	HeaderButton()
+	
