@@ -38,5 +38,7 @@ define [
 		yopage: -> @RM.load Content: 'views/yopage'
 		
 		foopage: -> @RM.load Content: 'views/foopage'	
+
+		theme: ->	@RM.load Content: 'views/theme'
 			
 	return AppController

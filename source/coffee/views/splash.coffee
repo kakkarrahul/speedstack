@@ -14,6 +14,7 @@ define [
 				{url: 'login', title: 'Login'}
 				{url: 'songs', title: 'Songs'}
 				{url: 'charts', title: 'Charts'}
+				{url:	'theme',	title:	'theme'}
 			]
 
 	return SplashPage

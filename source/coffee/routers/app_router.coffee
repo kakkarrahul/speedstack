@@ -16,6 +16,7 @@ define [
 			'songs(/)': 'songs'
 			'yo(/)': 'yopage'
 			'foo(/)': 'foopage'
+			'theme(/)': 'theme'
 			
 		initialize: (options)->
 			@listenTo approuter, 'go:back', @goBack

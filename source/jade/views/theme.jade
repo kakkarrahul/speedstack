@@ -1,0 +1,95 @@
+mixin List-Item(url, title)
+	li
+		a(href="#{url}") #{title}
+
+mixin SideList(items)
+	ul#menu-nav
+		each item in items
+			+List-Item(item.url, item.title)
+
+mixin Service-Cat(tag,icon, text)
+	.service-def
+		.service-content
+			h3#service-tag #{tag}
+			p#service-brif #{text}
+			span#service-icon	#{icon}
+
+.theme
+	.theme-header
+		.theme-navbar
+			.logo
+				a(href='#')#logo-btn	Logo
+			.side-nav
+				+SideList(list_items)
+
+		.header-text
+			.quote-text	Life is nothing without
+				br
+				| music
+			.passion-text	I love sing and photography. Let's dance with me :)
+			a(href="#")#read-btn	READ MORE
+
+	.service-container
+		.container-text
+			.service-text	Services
+			.service-tag	I can help you for a few things
+		.service-cat
+			each k in [1,2,3]
+				+Service-Cat('Swag', 'Yo', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim.')
+	
+	//-About	
+	.about-container
+		.about-wrap
+			.about-yo	About Me
+			.about-tag	I'm a programmer and designer
+
+		//-About Details	
+		.about-swag
+			.about-tittle	Hello	Mamla
+			p#about-info	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, consequat.
+
+	//-Skills and Education
+	.skills-container
+
+		//-Skills Details
+		.skills-wrap
+			.skills-tittle My Skills
+			.skills-tag	Skills
+
+		//-Education Details
+		.edu-wrap
+			.edu-tittle My Education
+			.edu-tag	Skills
+
+	//-work container
+	.work-container
+
+		//-Work Details
+		.work-wrap
+			.work-tittle My Work
+			.work-tag	work
+
+	//-Blog container
+	.blog-container
+
+		//-Blog Details
+		.blog-wrap
+			.blog-tittle My Diary
+			.blog-tag	Diary
+
+		.blog-card-wrap
+			.blog-card
+				h3#blog-name 
+					a(href='') Swag
+				small#blog-time	by bhai/21 Aug
+				p#blog-content	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+
+			.blog-card
+				h3#blog-name Swag
+				small#blog-time	by bhai/21 Aug
+				p#blog-content	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+
+			.blog-card
+				h3#blog-name Swag
+				small#blog-time	by bhai/21 Aug
+				p#blog-content	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
